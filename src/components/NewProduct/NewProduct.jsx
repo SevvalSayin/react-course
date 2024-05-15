@@ -11,7 +11,6 @@ const NewProduct = ({ products, setProducts }) => {
 
   return (
     <div className="new-product-wrapper">
-      <p>Şevval Sayın</p>
       {isOpen ? (
         <ProductForm
           setIsOpen={setIsOpen}

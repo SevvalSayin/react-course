@@ -1,17 +1,20 @@
 import { useState } from "react";
 import "./ProductForm.css";
 
-const ProductForm = ({products, onSaveProduct,setIsOpen}) => {
+const ProductForm = ({ products, onSaveProduct, setIsOpen }) => {
   const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState();
+  const [productPrice, setProductPrice] = useState(0);
   const [imageUrl, setImageUrl] = useState("");
+
   const titleChangeHandler = (event) => {
     setProductName(event.target.value);
   };
 
   const priceChangeHandler = (event) => {
-    setProductPrice(parseInt(event.target.value));
+    const price = event.target.value.trim();
+    setProductPrice(isNaN(price) || price === "" ? "" : parseInt(price));
   };
+  
 
   const imageChangeHandler = (event) => {
     setImageUrl(event.target.value);
@@ -19,14 +22,22 @@ const ProductForm = ({products, onSaveProduct,setIsOpen}) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    
+    if (productPrice === "" || isNaN(productPrice)) {
+      alert("Fiyatı Girmeyi Unutmayınız");
+      return;
+    }
+  
     const newProductData = {
-      id:  products.length + 1,
+      id: products.length + 1,
       productName,
-      productPrice,
+      productPrice: parseInt(productPrice),
       imageUrl,
     };
+  
+   
+  
 
-    // props.setProducts((prevState) => [...prevState, newProductData]);
     onSaveProduct(newProductData);
     setProductName("");
     setProductPrice("");
@@ -63,8 +74,14 @@ const ProductForm = ({products, onSaveProduct,setIsOpen}) => {
         />
       </div>
       <div className="form-buttons">
-      <button className="product-form-button">Ürün Ekle</button>
-      <button onClick={()=> setIsOpen(false)} className="product-form-button cancel" type="button">Vazgeç</button>
+        <button className="product-form-button">Ürün Ekle</button>
+        <button
+          onClick={() => setIsOpen(false)}
+          className="product-form-button cancel"
+          type="button"
+        >
+          Vazgeç
+        </button>
       </div>
     </form>
   );

@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-color: rgb(188, 29, 98);
   color: white;
 }
 
@@ -20,6 +20,6 @@ button {
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  background-color: rgb(238, 102, 5);
+  background-color: rgb(49, 231, 25);
   color: white;
 }

@@ -11,10 +11,10 @@ const Products = () => {
   return (
     <div className="product-wrapper">
       <NewProduct products={products} setProducts={setProducts} />
-      <h1>Products</h1>
+      <h4>SURA HOTEL</h4>
       <div className="products">
         {products.length === 0 ? (
-          <p>Hiç ürün yok</p>
+          <p>Ürün Giriniz</p>
            ):(
            products.map((product) => (
         <ProductItem product={product} key={product.id} products={products}setProducts={setProducts}/>
